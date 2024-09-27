@@ -128,20 +128,6 @@ async def on_ready():
             RichPanel(f" Successful authentication",
                       style="bold green",
                       width=47))
-        console.print(
-            RichPanel(
-                f" Hello, {client.user.name}! Starting Cloner...",
-                style="bold blue",
-                width=47))
-        print(f"\n")
-        questions = [
-            inquirer.List(
-                'clone_emojis',
-                message="\033[35mDo you want to clone emojis?\033[0m",
-                choices=['\033[32mYes\033[0m', '\033[31mNo\033[0m'],
-            ),
-        ]
-        answers = inquirer.prompt(questions)
         guild_from = client.get_guild(int(input_guild_id))
         guild_to = client.get_guild(int(output_guild_id))
         await Clone.guild_edit(guild_to, guild_from)
