@@ -133,15 +133,6 @@ async def on_ready():
                 f" Hello, {client.user.name}! Starting Cloner...",
                 style="bold blue",
                 width=47))
-        print(f"\n")
-        questions = [
-            inquirer.List(
-                'clone_emojis',
-                message="\033[35mDo you want to clone emojis?\033[0m",
-                choices=['\033[32mYes\033[0m', '\033[31mNo\033[0m'],
-            ),
-        ]
-        answers = inquirer.prompt(questions)
         guild_from = client.get_guild(int(input_guild_id))
         guild_to = client.get_guild(int(output_guild_id))
         await Clone.guild_edit(guild_to, guild_from)
@@ -152,7 +143,6 @@ async def on_ready():
         end_time = time.time()
         duration = end_time - start_time
         duration_str = time.strftime("%M:%S", time.gmtime(duration))
-        if answers['clone_emojis'] == '\033[32mYes\033[0m':
             print(
                 f"{Style.BRIGHT}{Fore.YELLOW}Cloning emojis in progress. This may take a few moments."
             )
